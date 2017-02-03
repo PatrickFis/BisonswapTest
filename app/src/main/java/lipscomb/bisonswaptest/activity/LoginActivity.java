@@ -120,9 +120,12 @@ public class LoginActivity extends Activity {
             public void onResponse(String response) {
                 Log.d(TAG, "Login Response: " + response.toString());
                 hideDialog();
-
+                // Response has login.php attached to the front, so remove it with this substring operation
+                response = response.substring(9, response.length());
+//                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
                 try {
                     JSONObject jObj = new JSONObject(response);
+                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                     boolean error = jObj.getBoolean("error");
 
                     // Check for error node in json
@@ -166,8 +169,8 @@ public class LoginActivity extends Activity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "Login Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),
+                //        error.getMessage(), Toast.LENGTH_LONG).show();
                 hideDialog();
             }
         }) {

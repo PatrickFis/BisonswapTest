@@ -28,6 +28,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final String TABLE_USER = "user";
 
     // Login Table Columns names
+//    private static final String ID_USERS = "idusers";
+//    private static final String KEY_EMAIL = "email";
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
     private static final String KEY_EMAIL = "email";
@@ -105,7 +107,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     }
 
     /**
-     * Re crate database Delete all tables and create them again
+     * Recreate database Delete all tables and create them again
      * */
     public void deleteUsers() {
         SQLiteDatabase db = this.getWritableDatabase();
